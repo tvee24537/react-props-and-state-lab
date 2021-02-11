@@ -2,10 +2,19 @@ import React from 'react'
 
 import Pet from './Pet'
 
-class PetBrowser extends React.Component {
-  render() {
-    return <div className="ui cards">PET COMPONENT SHOULD GO HERE</div>
+const PetBrowser = (props) => {
+  
+  const displayPetCards = () => {
+    return props.pets.map(pet => {
+      return <Pet 
+        key={pet.id} 
+        pet={pet}
+        onAdoptPet={props.onAdoptPet}
+      />
+    })
   }
+  
+  return <div className="ui cards">{displayPetCards()}</div>
 }
 
 export default PetBrowser
